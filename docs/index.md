@@ -46,6 +46,7 @@ This article will cover the following topics:
   - Let's verify the cluster and fetch the node details 
       
          kubectl get nodes
+    
     <img src="images/image4.png" class="inline"/>
 
 - Deploy Application Load Balancer on AWS Fargate
@@ -53,6 +54,7 @@ This article will cover the following topics:
     - First, we will deploy the rbac_role manifest and it will grant required permissions to the ALB ingress controller to interact with the cluster we deployed.
     
           kubectl apply -f rbac-role.yaml
+     
      <img src="images/image5.png" class="inline"/>
     
     - Next, we need to deploy the ALB ingress controller but before that, we need to edit and update few details in the alb-ingress-controller.yaml file
@@ -65,6 +67,7 @@ This article will cover the following topics:
      - Now we will deploy the ALB ingress controller that will create an Ingress Controller that uses ALB
           
             kubectl apply -f alb-ingress-controller.yaml
+       
        <img src="images/image6.png" class="inline"/>
        
       - Let's verify the output 
