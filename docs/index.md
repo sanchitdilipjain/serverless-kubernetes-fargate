@@ -81,17 +81,20 @@ This article will cover the following topics:
       - Then, we create a service for our application:
       
             kubectl apply -f nodeport.yaml
-         <br><img src="images/image9.png" class="inline"/>
+         
+         <img src="images/image9.png" class="inline"/>
        
        - Finally, we will deploy the ingress to expose our application to the public internet.
        
              kubectl apply -f ingress.yaml 
-         <br><img src="images/image10.png" class="inline"/>
+         
+         <img src="images/image10.png" class="inline"/>
         
        - Let's check status of the ingress with the below command and note the Address in the output section will be the public URL for our application
        
               kubectl describe ing ingress
-         <br><img src="images/image11.png" class="inline"/>
+         
+         <img src="images/image11.png" class="inline"/>
 
        - AWS ALB console output
        
