@@ -104,7 +104,7 @@ This article will cover the following topics:
 - Let's wrap-up and clean all the resources 
   - Execute below command to delete the Fargate profile 
     
-      eksctl delete cluster --name demo-cluster --region us-west-2
+        eksctl delete cluster --name demo-cluster --region us-west-2
       
      <img src="images/image14.png" class="inline"/>
    
