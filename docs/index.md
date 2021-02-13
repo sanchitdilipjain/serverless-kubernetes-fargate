@@ -1,37 +1,29 @@
-## Welcome to GitHub Pages
+## Serverless Kubernetes: AWS EKS on Fargate
 
-You can use the [editor on GitHub](https://github.com/sanchitdilipjain/serverless-kubernetes-fargate/edit/main/docs/index.md) to maintain and preview the content for your website in Markdown files.
+**Introduction**
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Amazon is investing more effort into their serverless stack and this functionality will allow us to run Kubernetes in a “serverless” mode. I am really thrilled about being able to run Kubernetes pods in Fargate as this minimizes the overhead to run Kubernetes applications and there is zero need to run any EC2 worker nodes.
 
-### Markdown
+This article will cover the following topics:
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+- Deploy EKS on AWS Fargate
+- Deploy Application Load Balancer on AWS Fargate
 
-```markdown
-Syntax highlighted code block
+**AWS Fargate**
+<br>AWS Fargate allows us to build and deploy containerized applications without worrying about underlying infra and it also reduces a lot of the overhead involved with deploying applications. 
 
-# Header 1
-## Header 2
-### Header 3
+**AWS Elastic Kubernetes Service (EKS)**
+<br>EKS is Amazon’s fully managed Kubernetes Service that allow to run Kubernetes on AWS without managing the control plane and it also reduces a lot of the overhead involved with having to manage and run the control plane.
 
-- Bulleted
-- List
+**How to setup an EKS cluster on Fargate**
 
-1. Numbered
-2. List
+***Prerequisites***
+<br>The following tools we will be leverage for this demo:
+- <a href="https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html">eksctl</a>: Official CLI to create a new EKS cluster.
+- <a href="https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html">kubectl</a>: Kubernetes uses a command line utility called kubectl for communicating with the cluster API server.
 
-**Bold** and _Italic_ and `Code` text
+***Setting up***
 
-[Link](url) and ![Image](src)
-```
+- Deploy EKS on AWS Fargate
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/sanchitdilipjain/serverless-kubernetes-fargate/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+- Deploy Application Load Balancer on AWS Fargate
