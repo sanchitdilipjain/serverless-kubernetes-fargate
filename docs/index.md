@@ -107,9 +107,4 @@ This article will cover the following topics:
         eksctl delete cluster --name demo-cluster --region us-west-2
       
      <img src="images/image14.png" class="inline"/>
-   
-   - Next delete AWS EKS cluster from AWS console
-   
-   - Then delete ALB and Target from AWS console
-   
-   - Finally delete Cloudformation stack from AWS console
+     
