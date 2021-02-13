@@ -2,7 +2,7 @@
 
 **Introduction**
 
-Amazon is investing more effort into their serverless stack and this functionality will allow us to run Kubernetes in a “serverless” mode. I am really thrilled about being able to run Kubernetes pods in Fargate as this minimizes the overhead to run Kubernetes applications and there is zero need to run any EC2 worker nodes.
+Amazon is investing more effort into their serverless stack and this functionality will allow us to run Kubernetes in a “serverless” mode. I am thrilled about being able to run Kubernetes pods in Fargate as this minimizes the overhead to run Kubernetes applications and there is zero need to run any EC2 worker nodes.
 
 This article will cover the following topics:
 
@@ -13,7 +13,7 @@ This article will cover the following topics:
 <br>AWS Fargate allows us to build and deploy containerized applications without worrying about underlying infra and it also reduces a lot of the overhead involved with deploying applications. 
 
 **AWS Elastic Kubernetes Service (EKS)**
-<br>EKS is Amazon’s fully managed Kubernetes Service that allow to run Kubernetes on AWS without managing the control plane and it also reduces a lot of the overhead involved with having to manage and run the control plane.
+<br>EKS is Amazon’s fully managed Kubernetes Service that allows running Kubernetes on AWS without managing the control plane and it also reduces a lot of the overhead involved with having to manage and run the control plane.
 
 **How to setup an EKS cluster on Fargate**
 
@@ -25,15 +25,15 @@ This article will cover the following topics:
 ***Setting up***
 
 - Deploy EKS on AWS Fargate
-  - Below command will deploy a EKS cluster named demo-cluster with Fargate enabled. It will take roughly 15-20 minutes to completely deploy the cluster so hold on until the process finish.
+  - Below command will deploy an EKS cluster named demo-cluster with Fargate enabled. It will take roughly 15-20 minutes to completely deploy the cluster so hold on until the process finishes.
       
         eksctl create cluster --name demo-cluster --version 1.18 --region us-east-2 --fargate --alb-ingress-access
   - A deeper look into the command we ran above:
     - name: specify the name of the cluster you want example demo-cluster
     - region: AWS region you want to deploy the cluster example us-west-2
     - fargate: it will create a Fargate profile, which is used to run pods as Fargate tasks and this profile has permission to the default and kube-system namespaces
-    - ALB ingress access: EKS on Fargate only supports the ALB and this falg will enable few configuration required to deployed ALB to work with Fargate.
-  - If everything is green then you will see below output:
+    - ALB ingress access: EKS on Fargate only supports the ALB and this flag will enable few configurations required to deployed ALB to work with Fargate.
+  - If everything is green then you will see the below output:
     - EKSCTL command output
       <br><img src="images/image.png" class="inline"/>
       
@@ -49,20 +49,20 @@ This article will cover the following topics:
     <img src="images/image4.png" class="inline"/>
 
 - Deploy Application Load Balancer on AWS Fargate
-  - In this step, we will provision the AWS ALB Ingress controller to allow external traffic accessibility for our application
-    - First we will deploy rbac_role manifest and it will grant required permissions to the ALB ingress controller to interact with the cluster we deployed.
+  - In this step, we will provide the AWS ALB Ingress controller to allow external traffic accessibility for our application
+    - First, we will deploy the rbac_role manifest and it will grant required permissions to the ALB ingress controller to interact with the cluster we deployed.
     
           kubectl apply -f rbac-role.yaml
      <img src="images/image5.png" class="inline"/>
     
-    - Next we need to deploy ALB ingress controller but before that we need to edit and update few details in the alb-ingress-controller.yaml file
+    - Next, we need to deploy the ALB ingress controller but before that, we need to edit and update few details in the alb-ingress-controller.yaml file
         - cluster-name: name of the EKS cluster<br>
         - vpc-id: VPC ID of the EKS cluster
         - aws-region: The region for your EKS cluster<br>
         - AWS_ACCESS_KEY_ID: The AWS access key id that ALB controller can use to communicate with AWS<br>
         - AWS_SECRET_ACCESS_KEY: The AWS secret access key id that ALB controller can use to communicate with AWS<br>
         Note: for a production setup, it is recommended to use a project like kube2iam for providing IAM Access <br>
-     - Now we will deploy ALB ingress controller that will create an Ingress Controller which uses ALB
+     - Now we will deploy the ALB ingress controller that will create an Ingress Controller that uses ALB
           
             kubectl apply -f alb-ingress-controller.yaml
        <img src="images/image6.png" class="inline"/>
@@ -91,7 +91,7 @@ This article will cover the following topics:
          
          <img src="images/image10.png" class="inline"/>
         
-       - Let's check status of the ingress with the below command and note the Address in the output section will be the public URL for our application
+       - Let's check the status of the ingress with the below command and note the Address in the output section will be the public URL for our application
        
               kubectl describe ing ingress
          
