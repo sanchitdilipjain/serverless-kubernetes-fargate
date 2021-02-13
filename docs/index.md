@@ -76,7 +76,8 @@ This article will cover the following topics:
       - Next, we will create the deployment for the application:
              
              kubectl apply -f deployment.yaml
-       <br><img src="images/image8.png" class="inline"/>
+         
+         <img src="images/image8.png" class="inline"/>
        
       - Then, we create a service for our application:
       
