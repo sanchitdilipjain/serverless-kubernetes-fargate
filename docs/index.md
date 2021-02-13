@@ -102,7 +102,7 @@ This article will cover the following topics:
          <br><img src="images/image13.png" class="inline"/>
 
 - Let's wrap-up and clean all the resources 
-  - Execute below command to delete the Fargate profile 
+  - Execute below command to delete Fargate and associate resources 
     
         eksctl delete cluster --name demo-cluster --region us-west-2
       
