@@ -64,7 +64,7 @@ This article will cover the following topics:
         - AWS_ACCESS_KEY_ID: The AWS access key id that ALB controller can use to communicate with AWS<br>
         - AWS_SECRET_ACCESS_KEY: The AWS secret access key id that ALB controller can use to communicate with AWS<br>
         Note: for a production setup, it is recommended to use a project like kube2iam for providing IAM Access <br>
-     - Now we will deploy the ALB ingress controller that will create an Ingress Controller that uses ALB
+     - Now we will deploy the ALB ingress controller that will create an Ingress Controller required by ALB
           
             kubectl apply -f alb-ingress-controller.yaml
        
