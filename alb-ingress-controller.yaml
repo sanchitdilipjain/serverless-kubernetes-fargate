@@ -1,0 +1,46 @@
+# Application Load Balancer (ALB) Ingress Controller Deployment Manifest.
+# This manifest details sensible defaults for deploying an ALB Ingress Controller.
+# GitHub: https://github.com/kubernetes-sigs/aws-alb-ingress-controller
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: alb-ingress-controller
+  name: alb-ingress-controller
+  # Namespace the ALB Ingress Controller should run in. Does not impact which
+  # namespaces it's able to resolve ingress resource for. For limiting ingress
+  # namespace scope, see --watch-namespace.
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: alb-ingress-controller
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: alb-ingress-controller
+    spec:
+      containers:
+        - name: alb-ingress-controller
+
+          args:
+            - --ingress-class=alb
+            - --cluster-name=Cluster_Name
+            - --aws-vpc-id=VPC_ID
+            - --aws-region=AWS_REGION
+
+          env:
+            # AWS key id for authenticating with the AWS API.
+            # This is only here for examples. It's recommended you instead use
+            # a project like kube2iam for granting access.
+            - name: AWS_ACCESS_KEY_ID
+              value: Secret_Key
+
+            # AWS key secret for authenticating with the AWS API.
+            # This is only here for examples. It's recommended you instead use
+            # a project like kube2iam for granting access.
+            - name: AWS_SECRET_ACCESS_KEY
+              value: Secret_Value
+              
+          image: docker.io/amazon/aws-alb-ingress-controller:v1.1.4
+      serviceAccountName: alb-ingress-controller
